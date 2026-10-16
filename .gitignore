@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Entornos y datos
+.env
+*.csv
+!**/datos/*.csv
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Sistema
+.DS_Store
+Thumbs.db
