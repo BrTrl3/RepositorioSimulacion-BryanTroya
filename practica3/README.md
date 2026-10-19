@@ -151,9 +151,13 @@ practica3/
 ├── requirements.txt              # Dependencias del proyecto
 ├── .gitignore                    # Archivos a ignorar por Git
 ├── README.md                     # Documentación de la práctica
+├── INFORME_PRACTICA3.md          # Informe: procedimiento, resultados, análisis, conclusiones y preguntas de control
+├── GUIA_EXPOSICION.md            # Guía de preparación de la exposición/defensa
 ├── ANALISIS_CUMPLIMIENTO_GUIA.md # Análisis de cumplimiento de la guía
 ├── PROMPT MAESTRO PARA OPENCODE= PRÁCTICA 03 DE SIMULACIÓN MM1.md
 ├── REGLAS_EQUIPO.md              # Reglas de trabajo colaborativo
+│
+├── evidencias/                   # Gráficas PNG generadas por ejecuciones reales
 │
 ├── controller/                   # Capa Controlador (MVC)
 │   ├── __init__.py
@@ -281,12 +285,3 @@ Se verifican: fórmulas teóricas para λ=2.0, μ=3.0; utilización = λ/μ; rec
 
 ---
 
-## Anexo A. Prompt maestro utilizado con la IA
-
-> El siguiente texto corresponde al prompt maestro completo entregado a OpenCode para generar este proyecto. Su contenido se conserva íntegramente para garantizar trazabilidad del uso de IA.
-
-<!-- PROMPT_MAESTRO_INICIO -->
-
-*(Se omite aquí la transcripción completa del prompt maestro por brevedad, ya que se encuentra disponible en el archivo `PROMPT MAESTRO PARA OPENCODE= PRÁCTICA 03 DE SIMULACIÓN MM1.md` ubicado en esta misma carpeta. Dicho archivo contiene el prompt íntegro utilizado durante el desarrollo.)*
-
-<!-- PROMPT_MAESTRO_FIN -->
