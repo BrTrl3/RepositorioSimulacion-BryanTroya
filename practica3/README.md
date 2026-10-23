@@ -277,7 +277,6 @@ Se verifican: fórmulas teóricas para λ=2.0, μ=3.0; utilización = λ/μ; rec
 - **Uso dado:** Apoyo en estructuración (MVC), implementación (modelo SimPy, métricas, controlador, vista Streamlit/Matplotlib), redacción de pruebas, redacción de este README y revisión/corrección de errores.
 - **Supervisión humana:** Los integrantes deben comprender cada archivo, ejecutar pruebas, verificar que resultados provienen de ejecución real y validar valores antes de presentar.
 - **Integridad:** Ningún resultado fue inventado. Todo dato mostrado se calcula al ejecutar la aplicación.
-- **Prompt principal:** Transcrito íntegramente en el **Anexo A**.
 
 ## 7. Flujo secuencial
 
