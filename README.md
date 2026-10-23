@@ -1,196 +1,76 @@
-# Repositorio de Prácticas de Simulación
+# 🎓 Repositorio de Prácticas de Simulación
 
-**Materia:** Simulación  
-**Autor:** Bryan Troya  
+**Materia:** Simulación
+**Autor:** Bryan Troya
 **Universidad Nacional de Loja**
 
-## 1. Descripción del proyecto
+## 📖 Descripción del proyecto
 
-Este repositorio contiene el desarrollo de todas las prácticas realizadas durante el curso de **Simulación**. Cada práctica aborda distintos conceptos de modelado, análisis y simulación de sistemas, implementados en **Python** con un enfoque modular, ordenado, claro y debidamente documentado.
+Este repositorio reúne el desarrollo de las **prácticas de la asignatura de Simulación**, implementadas en **Python** con un enfoque modular, ordenado y documentado.
 
-El propósito principal es aplicar los fundamentos teóricos vistos en clase mediante la implementación práctica de algoritmos, modelos de simulación y análisis de resultados, obteniendo soluciones funcionales, comprensibles y verificables.
+El objetivo es aplicar los fundamentos teóricos del curso mediante la implementación de modelos matemáticos, simulaciones y análisis de resultados, obteniendo soluciones funcionales, comprensibles y verificables.
 
-## 2. Tecnologías utilizadas
+## 🛠️ Tecnologías utilizadas
 
 | Tecnología | Uso |
-|-------------|-----|
-| **Python**     | Lenguaje principal para el desarrollo de todas las prácticas. |
-| **SimPy**      | Motor de simulación de eventos discretos (utilizado en la Práctica 3). |
-| **NumPy**      | Generación de variables aleatorias, cálculos numéricos y estadísticos (Práctica 3). |
-| **Matplotlib** | Generación y visualización de gráficas (Práctica 3). |
-| **Streamlit**  | Interfaz web local interactiva para la visualización de resultados (Práctica 3). |
-| **unittest**   | Pruebas automatizadas para validar el correcto funcionamiento (Práctica 3). |
+| :--- | :--- |
+| **Python** | Lenguaje principal de todas las prácticas |
+| **NumPy** | Cálculos numéricos y generación de variables aleatorias |
+| **Matplotlib** | Visualización de resultados mediante gráficas |
+| **SimPy** | Simulación de eventos discretos |
+| **Streamlit** | Interfaz web interactiva para visualizar resultados |
+| **unittest** | Pruebas automatizadas |
 
-## 3. Instalación
-
-Sigue estos pasos para clonar e instalar el repositorio en tu equipo:
+## ⚙️ Instalación
 
 ```bash
-# 1. Clonar el repositorio
-git clone https://github.com/BryanTroya/RepositorioSimulacion-BryanTroya.git
+# Clonar el repositorio
+git clone https://github.com/BrTrl3/RepositorioSimulacion-BryanTroya.git
 
-# 2. Acceder a la carpeta del proyecto
+# Acceder al proyecto
 cd RepositorioSimulacion-BryanTroya
 ```
 
-> **Nota:** La **Práctica 3** cuenta con dependencias externas, por lo que se recomienda trabajar dentro de un entorno virtual. Las prácticas 1 y 2 únicamente requieren tener **Python 3.10 o superior** instalado.
+> **Nota:** Cada práctica es independiente y puede tener sus propias dependencias. Se recomienda revisar el `README.md` de cada práctica para ver sus instrucciones específicas de instalación y ejecución.
 
-## 4. Configuración y Uso
-
-### 🔹 Práctica 1
-
-```bash
-# Ejecutar desde la raíz del repositorio
-python practica1/main.py
-```
-
-### 🔹 Práctica 2
-
-```bash
-# Ejecutar desde la raíz del repositorio
-python practica2/main.py
-```
-
-### 🔹 Práctica 3 – Simulación de Cola M/M/1
-
-Esta práctica implementa un sistema de líneas de espera **M/M/1** con arquitectura **MVC**, pruebas automatizadas e interfaz web con **Streamlit**.
-
-#### 4.1. Crear y activar el entorno virtual
-
-**Linux / macOS**
-
-```bash
-cd practica3
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-**Windows (PowerShell)**
-
-```powershell
-cd practica3
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-**Windows (Símbolo del sistema / CMD)**
-
-```bat
-cd practica3
-python -m venv .venv
-.venv\Scripts\activate.bat
-```
-
-#### 4.2. Instalar dependencias
-
-Con el entorno virtual activado, ejecuta:
-
-```bash
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-#### 4.3. Ejecutar las pruebas
-
-```bash
-python -m unittest -v
-```
-
-#### 4.4. Iniciar la aplicación
-
-```bash
-streamlit run app.py
-```
-
-Una vez iniciada, abre en tu navegador la dirección que aparece en consola:
+## 📁 Estructura del proyecto
 
 ```
-Local URL: http://localhost:8501
-```
-
-Para detener la aplicación, presiona `Ctrl + C` en la terminal.
-
-## 5. Estructura del proyecto
-
-```text
 RepositorioSimulacion-BryanTroya/
 │
-├── GUIAreadme.md        # Guía para la elaboración del README
-├── readmeejemplo.md     # Ejemplo de README tomado como referencia
-├── README.md            # Documento principal del repositorio
+├── README.md            # Este documento
 │
-├── practica1/
-│   ├── README.md        # Documentación de la Práctica 1
-│   └── main.py          # Código fuente de la Práctica 1
-│
-├── practica2/
-│   ├── README.md        # Documentación de la Práctica 2
-│   └── main.py          # Código fuente de la Práctica 2
-│
-└── practica3/
-    ├── app.py                        # Punto de entrada de la aplicación Streamlit
-    ├── requirements.txt              # Lista de dependencias con sus versiones
-    ├── .gitignore                    # Archivos y carpetas ignorados por Git
-    ├── README.md                     # Documentación detallada de la Práctica 3
-    ├── ANALISIS_CUMPLIMIENTO_GUIA.md # Análisis de cumplimiento de la guía de la práctica
-    ├── PROMPT MAESTRO PARA OPENCODE= PRÁCTICA 03 DE SIMULACIÓN MM1.md
-    ├── REGLAS_EQUIPO.md              # Reglas de trabajo colaborativo
-    │
-    ├── controller/                   # Capa Controlador (MVC)
-    │   ├── __init__.py
-    │   └── simulation_controller.py
-    │
-    ├── model/                        # Capa Modelo (MVC)
-    │   ├── __init__.py
-    │   ├── metrics.py
-    │   └── queue_model.py
-    │
-    ├── view/                         # Capa Vista (MVC)
-    │   ├── __init__.py
-    │   └── dashboard.py
-    │
-    ├── tests/                        # Pruebas automatizadas con unittest
-    │   ├── __init__.py
-    │   ├── test_metrics.py
-    │   └── test_simulation.py
-    │
-    └── __pycache__/                  # Archivos compilados de Python (generados automáticamente)
+├── practica1/           # Práctica 1 (con su propio README)
+├── practica2/           # Práctica 2 (con su propio README)
+└── practica3/           # Práctica 3 (con su propio README)
 ```
 
-## 6. Información adicional
+Cada práctica contiene su **código fuente**, sus **dependencias** y su **propia documentación detallada**.
 
-### ✨ Características clave
+## 📋 Contenido
 
-- **Organización modular:** Cada práctica se encuentra completamente aislada con su propia documentación y código fuente.
-- **Arquitectura MVC:** Implementada en la **Práctica 3**, garantizando una clara separación entre Modelo, Controlador y Vista.
-- **Simulación real con eventos discretos:** Uso de **SimPy** para modelar el comportamiento dinámico de una cola M/M/1.
-- **Reproducibilidad:** Control de aleatoriedad mediante `seed`, permitiendo obtener los mismos resultados al repetir una ejecución.
-- **Comparación teórica vs simulada:** Cálculo de métricas teóricas y simuladas, presentadas en tablas y gráficas comparativas.
-- **Gráficas interactivas:** Visualización de la evolución de la cola, distribución de tiempos de espera y comparaciones entre escenarios con **Matplotlib**.
-- **Pruebas automatizadas:** Validación de fórmulas teóricas, consistencia de tiempos, capacidad del servidor, reproducibilidad y casos límite.
-- **Interfaz intuitiva:** Dashboard en español desarrollado con **Streamlit**, pensado para facilitar su comprensión y exposición.
+| Práctica | Tema | Documentación |
+| :--- | :--- | :--- |
+| **Práctica 1** | Modelo de posibilidad de lluvia | [`practica1/README.md`](practica1/README.md) |
+| **Práctica 2** | Modelos de crecimiento poblacional | [`practica2/README.md`](practica2/README.md) |
+| **Práctica 3** | Simulación de cola M/M/1 | [`practica3/README.md`](practica3/README.md) |
 
-### 📋 Estado de las prácticas
+> 💡 Para conocer los objetivos, la implementación, la ejecución y los resultados de cada práctica, consulta el `README.md` correspondiente.
 
-| Práctica | Tema | Estado |
-|-----------|------|--------|
-| **Práctica 1** | Introducción a Simulación | ✅ Completada |
-| **Práctica 2** | Fundamentos de Simulación | ✅ Completada |
-| **Práctica 3** | Simulación de Cola M/M/1 con SimPy, NumPy, Matplotlib, Streamlit y MVC | ✅ Completada |
+## ℹ️ Información adicional
 
 ### 👤 Autor
 
-**Bryan Troya**  
-Estudiante de la Carrera de Computación – Universidad Nacional de Loja  
+**Bryan Troya**
+Estudiante de la Carrera de Computación – Universidad Nacional de Loja
 Asignatura: Simulación
 
 ### 💡 Recomendaciones
 
-- Ejecuta las **Prácticas 1** y **2** directamente con Python, sin necesidad de entorno virtual.
-- Para la **Práctica 3**, siempre activa el entorno virtual antes de instalar dependencias, ejecutar pruebas o iniciar la aplicación.
-- Revisa el `README.md` específico de cada práctica para obtener información más detallada sobre su desarrollo, objetivos, resultados e interpretación.
-- Para conocer a fondo el desarrollo de la Práctica 3, consulta: [`practica3/README.md`](practica3/README.md)
+- Cada práctica es autónoma: entra a su carpeta y sigue las instrucciones de su propio `README.md`.
+- Para las prácticas con dependencias externas, usa un entorno virtual antes de instalar los paquetes.
+- Consulta la documentación específica de cada práctica para obtener detalles sobre su desarrollo e interpretación de resultados.
 
-## 7. Flujo secuencial
+### 📄 Licencia
 
-**¿Qué hace → Tecnologías → Instalación → Configuración y Uso → Estructura del proyecto → Información adicional**
+Proyecto académico para la asignatura de **Simulación**. Uso educativo.
