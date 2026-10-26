@@ -142,7 +142,7 @@ end]]></code>
     <button x="805" y="85" height="40" disableUntilTicks="false" forever="true" kind="Observer" width="55" display="go">go
 </button>
     <button x="805" y="40" height="40" disableUntilTicks="false" forever="false" kind="Observer" width="55" display="setup">setup</button>
-    <plot x="935" autoPlotX="true" yMax="10.0" autoPlotY="true" y="40" xMin="0.0" height="370" legend="false" xMax="10.0" yMin="0.0" width="585" display="Grafico_SIR">
+    <plot x="935" autoPlotX="true" yMax="10.0" autoPlotY="true" y="40" xMin="0.0" height="370" legend="true" xMax="10.0" yMin="0.0" width="585" display="Grafico_SIR">
       <setup></setup>
       <update></update>
       <pen interval="1.0" mode="0" display="S-NetLogo" color="-13345367" legend="true">
