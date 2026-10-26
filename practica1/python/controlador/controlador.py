@@ -63,8 +63,24 @@ def ejecutar_modelo():
     # RESULTADOS
     # ==========================================
 
-    indices_originales = []
-    indices_ajustados = []
+    resultados = {
+        "horas": list(HORAS),
+        "humedad": list(HUMEDAD),
+        "nubosidad": list(NUBOSIDAD),
+        "temperatura": list(TEMPERATURA),
+        "H": [],
+        "N": [],
+        "Tf": [],
+        "indice_original": [],
+        "estado_original": [],
+        "indice_ajustado": [],
+        "estado_ajustado": [],
+        "pesos_ajustados": {
+            "humedad": peso_humedad,
+            "nubosidad": peso_nubosidad,
+            "temperatura": peso_temperatura,
+        },
+    }
 
     for hora, humedad, nubosidad, temperatura in zip(
         HORAS,
@@ -105,11 +121,16 @@ def ejecutar_modelo():
         )
 
         # ==========================================
-        # GUARDAR ÍNDICES PARA LA GRÁFICA
+        # GUARDAR RESULTADOS
         # ==========================================
 
-        indices_originales.append(indice_original)
-        indices_ajustados.append(indice_ajustado)
+        resultados["H"].append(H)
+        resultados["N"].append(N)
+        resultados["Tf"].append(Tf)
+        resultados["indice_original"].append(indice_original)
+        resultados["estado_original"].append(estado_original)
+        resultados["indice_ajustado"].append(indice_ajustado)
+        resultados["estado_ajustado"].append(estado_ajustado)
 
         # ==========================================
         # MOSTRAR RESULTADO
@@ -120,6 +141,8 @@ def ejecutar_modelo():
             humedad,
             nubosidad,
             temperatura,
+            H,
+            N,
             Tf,
             indice_original,
             estado_original,
@@ -127,6 +150,6 @@ def ejecutar_modelo():
             estado_ajustado
         )
 
-        mostrar_fin_tabla()
+    mostrar_fin_tabla()
 
-    return indices_originales, indices_ajustados
+    return resultados

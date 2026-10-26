@@ -1,21 +1,22 @@
 # main.py
 
 from python.controlador.controlador import ejecutar_modelo
-from python.vista.graficas import graficar_indices
-from python.modelo.datos import HORAS
+from python.vista.graficas import generar_graficas
+from python.vista.reportes import guardar_resultados
 
 
 def main():
 
-    indices_originales, indices_ajustados = ejecutar_modelo()
+    resultados = ejecutar_modelo()
 
-    print("\nGenerando gráfica...")
+    print("\nGenerando graficas y archivo de resultados...")
 
-    graficar_indices(
-        HORAS,
-        indices_originales,
-        indices_ajustados
-    )
+    rutas = generar_graficas(resultados)
+    rutas.append(guardar_resultados(resultados))
+
+    print("\nArchivos generados:")
+    for ruta in rutas:
+        print(f"  - {ruta}")
 
 
 if __name__ == "__main__":

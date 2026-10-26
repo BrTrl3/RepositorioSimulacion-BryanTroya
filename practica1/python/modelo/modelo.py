@@ -11,18 +11,26 @@ PESO_HUMEDAD_ORIGINAL = 0.5
 PESO_NUBOSIDAD_ORIGINAL = 0.3
 PESO_TEMPERATURA_ORIGINAL = 0.2
 
+SEMILLA_POR_DEFECTO = 42
+
 
 # ==========================================
 # AJUSTE ALEATORIO
 # ==========================================
 
-def generar_pesos_aleatorios():
+def generar_pesos_aleatorios(semilla=SEMILLA_POR_DEFECTO):
     """
     Genera tres pesos aleatorios y los normaliza
     para que su suma sea igual a 1.
+
+    Se usa una semilla fija para que los resultados
+    sean reproducibles. Utilice semilla=None para
+    obtener pesos distintos en cada ejecución.
     """
 
-    pesos = np.random.random(3)
+    generador = np.random.default_rng(semilla)
+
+    pesos = generador.random(3)
 
     pesos = pesos / np.sum(pesos)
 
@@ -91,6 +99,25 @@ def calcular_factor_temperatura(temperatura):
 # MODELO ORIGINAL
 # ==========================================
 
+def calcular_indice_normalizado(
+    H,
+    N,
+    Tf,
+    peso_humedad=PESO_HUMEDAD_ORIGINAL,
+    peso_nubosidad=PESO_NUBOSIDAD_ORIGINAL,
+    peso_temperatura=PESO_TEMPERATURA_ORIGINAL
+):
+    """
+    Calcula el índice a partir de las variables ya normalizadas.
+    """
+
+    return (
+        peso_humedad * H
+        + peso_nubosidad * N
+        + peso_temperatura * Tf
+    )
+
+
 def calcular_indice(humedad, nubosidad, temperatura):
     """
     Calcula el índice utilizando:
@@ -102,11 +129,7 @@ def calcular_indice(humedad, nubosidad, temperatura):
     N = nubosidad / 100
     Tf = calcular_factor_temperatura(temperatura)
 
-    indice = (
-        PESO_HUMEDAD_ORIGINAL * H
-        + PESO_NUBOSIDAD_ORIGINAL * N
-        + PESO_TEMPERATURA_ORIGINAL * Tf
-    )
+    indice = calcular_indice_normalizado(H, N, Tf)
 
     return H, N, Tf, indice
 
@@ -134,10 +157,13 @@ def calcular_indice_ajustado(
     N = nubosidad / 100
     Tf = calcular_factor_temperatura(temperatura)
 
-    indice = (
-        peso_humedad * H
-        + peso_nubosidad * N
-        + peso_temperatura * Tf
+    indice = calcular_indice_normalizado(
+        H,
+        N,
+        Tf,
+        peso_humedad,
+        peso_nubosidad,
+        peso_temperatura
     )
 
     return H, N, Tf, indice

@@ -1,10 +1,13 @@
 # vista.py
 
 
+ANCHO = 140
+
+
 def mostrar_titulo():
-    print("=" * 120)
+    print("=" * ANCHO)
     print("MODELO DE POSIBILIDAD DE LLUVIA")
-    print("=" * 120)
+    print("=" * ANCHO)
 
 
 def mostrar_pesos(
@@ -32,23 +35,25 @@ def mostrar_suma_pesos(suma):
 
 def mostrar_encabezado_tabla():
     print("\n")
-    print("=" * 120)
+    print("=" * ANCHO)
     print("RESULTADOS")
-    print("=" * 120)
+    print("=" * ANCHO)
 
     print(
         f"{'Hora':<8}"
-        f"{'H (%)':<8}"
-        f"{'N (%)':<8}"
-        f"{'Temp.':<8}"
-        f"{'Tf':<8}"
-        f"{'I original':<15}"
+        f"{'Humedad (%)':<12}"
+        f"{'Nubosidad (%)':<14}"
+        f"{'Temp. (C)':<10}"
+        f"{'H':<10}"
+        f"{'N':<10}"
+        f"{'Tf':<10}"
+        f"{'I original':<12}"
         f"{'Estado original':<20}"
-        f"{'I ajustado':<15}"
+        f"{'I ajustado':<12}"
         f"{'Estado ajustado':<20}"
     )
 
-    print("-" * 120)
+    print("-" * ANCHO)
 
 
 def mostrar_fila(
@@ -56,6 +61,8 @@ def mostrar_fila(
     humedad,
     nubosidad,
     temperatura,
+    H,
+    N,
     Tf,
     indice_original,
     estado_original,
@@ -64,16 +71,18 @@ def mostrar_fila(
 ):
     print(
         f"{hora:<8}"
-        f"{humedad:<8}"
-        f"{nubosidad:<8}"
-        f"{temperatura:<8}"
-        f"{Tf:<8.2f}"
-        f"{indice_original:<15.2f}"
+        f"{humedad:<12}"
+        f"{nubosidad:<14}"
+        f"{temperatura:<10}"
+        f"{H:<10.2f}"
+        f"{N:<10.2f}"
+        f"{Tf:<10.2f}"
+        f"{indice_original:<12.4f}"
         f"{estado_original:<20}"
-        f"{indice_ajustado:<15.2f}"
+        f"{indice_ajustado:<12.4f}"
         f"{estado_ajustado:<20}"
     )
 
 
 def mostrar_fin_tabla():
-    print("=" * 120)
+    print("=" * ANCHO)
