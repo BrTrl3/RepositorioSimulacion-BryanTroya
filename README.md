@@ -15,6 +15,7 @@ El objetivo es aplicar los fundamentos teóricos del curso mediante la implement
 | Tecnología | Uso |
 | :--- | :--- |
 | **Python** | Lenguaje principal de todas las prácticas |
+| **Java** | Implementación alternativa y comparación de resultados en algunas prácticas |
 | **NumPy** | Cálculos numéricos y generación de variables aleatorias |
 | **Matplotlib** | Visualización de resultados mediante gráficas |
 | **SimPy** | Simulación de eventos discretos y simulación basada en agentes |
@@ -44,7 +45,8 @@ RepositorioSimulacion-BryanTroya/
 ├── practica1/           # Práctica 1 (con su propio README)
 ├── practica2/           # Práctica 2 (con su propio README)
 ├── practica3/           # Práctica 3 (con su propio README)
-└── practica4/           # Práctica 4 (con su propio README)
+├── practica4/           # Práctica 4 (con su propio README)
+└── practica5/           # Práctica 5 (con su propio README)
 ```
 
 Cada práctica contiene su **código fuente**, sus **dependencias** y su **propia documentación detallada**.
@@ -57,6 +59,7 @@ Cada práctica contiene su **código fuente**, sus **dependencias** y su **propi
 | **Práctica 2** | Modelos de crecimiento poblacional | [`practica2/README.md`](practica2/README.md) |
 | **Práctica 3** | Simulación de cola M/M/1 | [`practica3/README.md`](practica3/README.md) |
 | **Práctica 4** | Simulación del modelo SIR con agentes (Python + SimPy) | [`practica4/README.md`](practica4/README.md) |
+| **Práctica 5** | Generador congruencial lineal (Python + Java) | [`practica5/README.md`](practica5/README.md) |
 
 > 💡 Para conocer los objetivos, la implementación, la ejecución y los resultados de cada práctica, consulta el `README.md` correspondiente.
 
