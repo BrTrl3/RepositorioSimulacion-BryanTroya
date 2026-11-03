@@ -23,6 +23,15 @@ JAVA_DIR = BASE_DIR / "java"
 RESULTADOS_DIR = BASE_DIR / "resultados"
 SEMILLA_ALTERNATIVA_POR_DEFECTO = 54321
 CANTIDAD_POR_DEFECTO = 10000
+FUENTES_JAVA = [
+    JAVA_DIR / "Main.java",
+    JAVA_DIR / "modelo" / "LCG.java",
+    JAVA_DIR / "modelo" / "Registro.java",
+    JAVA_DIR / "modelo" / "Analisis.java",
+    JAVA_DIR / "controlador" / "LCGController.java",
+    JAVA_DIR / "vista" / "Consola.java",
+    JAVA_DIR / "vista" / "ReporteCsv.java",
+]
 
 
 class ErrorJava(Exception):
@@ -70,6 +79,7 @@ def ejecutar_practica(
             comparacion_java = _comparar_con_java(
                 principal=principal,
                 semilla=semilla,
+                semilla_alternativa=semilla_alternativa,
                 cantidad=cantidad,
                 directorio_salida=salida,
             )
@@ -104,11 +114,17 @@ def ejecutar_practica(
 def _comparar_con_java(
     principal: Any,
     semilla: int,
+    semilla_alternativa: int,
     cantidad: int,
     directorio_salida: Path,
 ) -> dict[str, Any]:
     ruta_csv = directorio_salida / f"java_lcg_{semilla}.csv"
-    ejecutar_java(semilla=semilla, cantidad=cantidad, ruta_salida=ruta_csv)
+    ejecutar_java(
+        semilla=semilla,
+        cantidad=cantidad,
+        ruta_salida=ruta_csv,
+        semilla_alternativa=semilla_alternativa,
+    )
     registros = leer_csv_java(ruta_csv)
     comparacion = analysis.comparar_con_java(principal, registros)
     comparacion["ruta_csv"] = str(ruta_csv)
@@ -119,6 +135,7 @@ def ejecutar_java(
     semilla: int = SEMILLA_POR_DEFECTO,
     cantidad: int = CANTIDAD_POR_DEFECTO,
     ruta_salida: Path | str | None = None,
+    semilla_alternativa: int = SEMILLA_ALTERNATIVA_POR_DEFECTO,
 ) -> Path:
     java = shutil.which("java")
     javac = shutil.which("javac")
@@ -141,6 +158,8 @@ def ejecutar_java(
         "Main",
         "--seed",
         str(semilla),
+        "--alt-seed",
+        str(semilla_alternativa),
         "--count",
         str(cantidad),
         "--output",
@@ -174,12 +193,7 @@ def compilar_java(javac: str | None = None) -> None:
     if javac is None:
         raise ErrorJava("no se encontro javac en el PATH")
 
-    fuentes = [
-        JAVA_DIR / "Main.java",
-        JAVA_DIR / "modelo" / "LCG.java",
-        JAVA_DIR / "controlador" / "LCGController.java",
-        JAVA_DIR / "vista" / "Consola.java",
-    ]
+    fuentes = list(FUENTES_JAVA)
     faltantes = [str(fuente) for fuente in fuentes if not fuente.exists()]
     if faltantes:
         raise ErrorJava(f"faltan archivos Java: {', '.join(faltantes)}")
@@ -208,16 +222,8 @@ def compilar_java(javac: str | None = None) -> None:
 
 
 def _necesita_compilacion() -> bool:
-    pares = [
-        (JAVA_DIR / "Main.java", JAVA_DIR / "Main.class"),
-        (JAVA_DIR / "modelo" / "LCG.java", JAVA_DIR / "modelo" / "LCG.class"),
-        (
-            JAVA_DIR / "controlador" / "LCGController.java",
-            JAVA_DIR / "controlador" / "LCGController.class",
-        ),
-        (JAVA_DIR / "vista" / "Consola.java", JAVA_DIR / "vista" / "Consola.class"),
-    ]
-    for fuente, clase in pares:
+    for fuente in FUENTES_JAVA:
+        clase = fuente.with_suffix(".class")
         if not clase.exists():
             return True
         if fuente.stat().st_mtime > clase.stat().st_mtime:

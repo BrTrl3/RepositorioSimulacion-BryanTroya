@@ -1,12 +1,7 @@
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 import controlador.LCGController;
-import controlador.LCGController.Registro;
-import modelo.LCG;
-import vista.Consola;
 
 public final class Main {
 
@@ -15,6 +10,7 @@ public final class Main {
 
     public static void main(String[] args) {
         long semilla = 12345L;
+        long semillaAlternativa = 54321L;
         int cantidad = 10000;
         String salida = null;
 
@@ -24,6 +20,9 @@ public final class Main {
                 switch (argumento) {
                     case "--seed":
                         semilla = Long.parseLong(valorRequerido(args, ++indice, argumento));
+                        break;
+                    case "--alt-seed":
+                        semillaAlternativa = Long.parseLong(valorRequerido(args, ++indice, argumento));
                         break;
                     case "--count":
                         cantidad = Integer.parseInt(valorRequerido(args, ++indice, argumento));
@@ -51,13 +50,7 @@ public final class Main {
         }
 
         try {
-            LCG.validarSemilla(semilla);
-            LCGController controlador = new LCGController();
-            List<Registro> registros = controlador.generar(semilla, cantidad);
-            Consola.mostrarEncabezado(semilla, cantidad);
-            Consola.mostrarPrimeros20(registros);
-            Path ruta = controlador.exportarCsv(registros, Paths.get(salida));
-            System.out.println("CSV generado: " + ruta.toAbsolutePath());
+            new LCGController().ejecutar(semilla, semillaAlternativa, cantidad, Paths.get(salida));
         } catch (IllegalArgumentException error) {
             System.err.println("Error: " + error.getMessage());
             System.exit(2);
@@ -76,9 +69,10 @@ public final class Main {
 
     private static void mostrarAyuda() {
         System.out.println("Uso: java -cp java Main [opciones]");
-        System.out.println("  --seed N     semilla del generador (por defecto: 12345)");
-        System.out.println("  --count N    cantidad de valores (por defecto: 10000)");
-        System.out.println("  --output R   archivo CSV de salida");
-        System.out.println("  --help       muestra esta ayuda");
+        System.out.println("  --seed N       semilla del generador (por defecto: 12345)");
+        System.out.println("  --alt-seed N   semilla para la comparacion (por defecto: 54321)");
+        System.out.println("  --count N      cantidad de valores (por defecto: 10000)");
+        System.out.println("  --output R     archivo CSV de salida");
+        System.out.println("  --help         muestra esta ayuda");
     }
 }

@@ -1,72 +1,36 @@
 package controlador;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
+import modelo.Analisis;
 import modelo.LCG;
+import modelo.Registro;
+import vista.Consola;
+import vista.ReporteCsv;
 
 public class LCGController {
 
-    public static final class Registro {
-        private final long n;
-        private final long estado;
-        private final double u;
-
-        public Registro(long n, long estado, double u) {
-            this.n = n;
-            this.estado = estado;
-            this.u = u;
-        }
-
-        public long getN() {
-            return n;
-        }
-
-        public long getEstado() {
-            return estado;
-        }
-
-        public double getU() {
-            return u;
-        }
-    }
-
     public List<Registro> generar(long semilla, int cantidad) {
-        if (cantidad <= 0) {
-            throw new IllegalArgumentException("cantidad debe ser mayor que cero");
-        }
-
-        LCG lcg = new LCG(semilla);
-        List<Registro> registros = new ArrayList<>(cantidad);
-        for (int indice = 1; indice <= cantidad; indice++) {
-            long estado = lcg.siguiente();
-            double normalizado = estado / (double) LCG.M;
-            registros.add(new Registro(indice, estado, normalizado));
-        }
-        return registros;
+        return new LCG(semilla).generar(cantidad);
     }
 
-    public Path exportarCsv(List<Registro> registros, Path ruta) throws IOException {
-        Path padre = ruta.toAbsolutePath().getParent();
-        if (padre != null) {
-            Files.createDirectories(padre);
-        }
+    public void ejecutar(long semilla, long semillaAlternativa, int cantidad, Path salida)
+            throws IOException {
+        LCG.validarSemilla(semilla);
+        LCG.validarSemilla(semillaAlternativa);
 
-        try (BufferedWriter escritor = Files.newBufferedWriter(ruta, StandardCharsets.UTF_8)) {
-            escritor.write("n,estado,u");
-            escritor.newLine();
-            for (Registro registro : registros) {
-                escritor.write(
-                    registro.getN() + "," + registro.getEstado() + "," + registro.getU()
-                );
-                escritor.newLine();
-            }
-        }
-        return ruta;
+        List<Registro> principal = generar(semilla, cantidad);
+        List<Registro> alternativa = generar(semillaAlternativa, cantidad);
+
+        Consola.mostrarEncabezado(semilla, semillaAlternativa, cantidad);
+        Consola.mostrarPrimeros20(principal);
+        Consola.mostrarEstadisticas(Analisis.estadisticas(principal, 10));
+        Consola.mostrarPeriodo(Analisis.periodo(principal));
+        Consola.mostrarComparacionSemillas(semilla, principal, semillaAlternativa, alternativa);
+
+        Path ruta = ReporteCsv.exportar(principal, salida);
+        Consola.mostrarArchivo(ruta);
     }
 }

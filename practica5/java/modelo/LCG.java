@@ -1,5 +1,8 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LCG {
     public static final long A = 1664525L;
     public static final long C = 1013904223L;
@@ -34,5 +37,18 @@ public class LCG {
 
     public double siguienteNormalizado() {
         return siguiente() / (double) M;
+    }
+
+    public List<Registro> generar(int cantidad) {
+        if (cantidad <= 0) {
+            throw new IllegalArgumentException("cantidad debe ser mayor que cero");
+        }
+
+        List<Registro> registros = new ArrayList<>(cantidad);
+        for (int indice = 1; indice <= cantidad; indice++) {
+            long valor = siguiente();
+            registros.add(new Registro(indice, valor, valor / (double) M));
+        }
+        return registros;
     }
 }
