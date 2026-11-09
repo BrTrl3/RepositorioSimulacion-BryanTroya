@@ -8,15 +8,16 @@
 
 Este repositorio reúne el desarrollo de las **prácticas de la asignatura de Simulación**, implementadas principalmente en **Python** (y en **Java** cuando la guía lo pide) con un enfoque modular, ordenado y documentado, siguiendo la arquitectura **MVC** cuando corresponde.
 
-El objetivo es aplicar los fundamentos teóricos del curso mediante la implementación de modelos matemáticos, simulaciones y análisis de resultados, obteniendo soluciones funcionales, comprensibles y verificables. Las prácticas abarcan modelos probabilísticos, crecimiento poblacional, teoría de colas, simulación basada en agentes y generación de números pseudoaleatorios.
+El objetivo es aplicar los fundamentos teóricos del curso mediante la implementación de modelos matemáticos, simulaciones y análisis de resultados, obteniendo soluciones funcionales, comprensibles y verificables. Las prácticas abarcan modelos probabilísticos, crecimiento poblacional, teoría de colas, simulación basada en agentes, generación de números pseudoaleatorios y su validación estadística.
 
 ## 🛠️ Tecnologías utilizadas
 
 | Tecnología | Uso |
 | :--- | :--- |
 | **Python** | Lenguaje principal de todas las prácticas |
-| **Java** | Implementación alternativa y comparación de resultados (prácticas 1 y 5) |
+| **Java** | Implementación alternativa y comparación de resultados (prácticas 1, 5 y 6) |
 | **NumPy** | Cálculos numéricos y generación de variables aleatorias |
+| **Pandas** | Manejo de tablas y exportación de resultados |
 | **Matplotlib** | Visualización de resultados mediante gráficas |
 | **SimPy** | Simulación de eventos discretos y simulación basada en agentes |
 | **Streamlit** | Interfaz web interactiva para visualizar resultados |
@@ -47,7 +48,8 @@ RepositorioSimulacion-BryanTroya/
 ├── practica2/           # Práctica 2 (con su propio README)
 ├── practica3/           # Práctica 3 (con su propio README)
 ├── practica4/           # Práctica 4 (con su propio README)
-└── practica5/           # Práctica 5: LCG en Python y Java (con su propio README)
+├── practica5/           # Práctica 5: LCG en Python y Java (con su propio README)
+└── practica6/           # Práctica 6: validación estadística del LCG (con su propio README)
 ```
 
 Cada práctica contiene su **código fuente**, sus **dependencias** y su **propia documentación detallada**.
@@ -61,6 +63,7 @@ Cada práctica contiene su **código fuente**, sus **dependencias** y su **propi
 | **Práctica 3** | Simulación de cola M/M/1 | [`practica3/README.md`](practica3/README.md) |
 | **Práctica 4** | Simulación del modelo SIR con agentes (Python + SimPy) | [`practica4/README.md`](practica4/README.md) |
 | **Práctica 5** | Generador congruencial lineal: implementación MVC en Python y Java, comparación de secuencias, período y cambio de semilla | [`practica5/README.md`](practica5/README.md) |
+| **Práctica 6** | Validación estadística de números pseudoaleatorios con Chi-cuadrado y Kolmogorov-Smirnov (Python + Java) | [`practica6/README.md`](practica6/README.md) |
 
 > 💡 Para conocer los objetivos, la implementación, la ejecución y los resultados de cada práctica, consulta el `README.md` correspondiente.
 

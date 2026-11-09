@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Java
+*.class
+
+# Resultados generados
+#resultados/
+
+# Guia de la practica
+ape_guia*.pdf
